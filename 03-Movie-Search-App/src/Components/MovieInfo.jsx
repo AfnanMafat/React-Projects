@@ -23,17 +23,15 @@ export default function MovieInfo() {
   },[r,n]);
 
   const FetchData = () => {
-    axios
-      .get(`http://www.omdbapi.com/?t=${n}&y=${r}&apikey=fe0459c2`)
-      .then((res) => {
+    axios.get(`http://www.omdbapi.com/?t=${n}&y=${r}&apikey=fe0459c2`).then((res) => {
         setMovieData(res.data);
         if (res.data.Response == "True") {
           setFetch(true);
         }
-        setIsLoading(false); // Hide loader after data arrives
+        setIsLoading(false); 
       })
       .catch(() => {
-        setIsLoading(false); // Hide loader on error too
+        setIsLoading(false); 
       });
   };
 
@@ -42,7 +40,6 @@ export default function MovieInfo() {
     <>
 
     {isLoading ? (
-        // New loader component
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 flex items-center justify-center">
           <div className="text-center">
             <div className="relative mx-auto w-24 h-24">
@@ -58,7 +55,6 @@ export default function MovieInfo() {
           </div>
         </div>
       ) : Fetch ? (
-        // Existing movie info component
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 p-4 md:p-8 flex flex-col">
       <div className="max-w-6xl mx-auto flex-grow w-full">
         <div className="text-center mb-10">
@@ -287,7 +283,6 @@ export default function MovieInfo() {
       </div>
     </div>
       ) : (
-        // Error/not found state
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 flex items-center justify-center">
           <div className="text-center p-8 bg-gray-800 bg-opacity-70 backdrop-blur-lg rounded-2xl max-w-md">
             <div className="text-5xl mb-4">🎬</div>
